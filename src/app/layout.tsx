@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     "technology solutions",
   ],
   authors: [{ name: "Flaron Tech" }],
+  icons: {
+    icon: "/FTlogo.png",
+  },
   openGraph: {
     title: "Flaron Tech — Growing Your Digital Presence Naturally",
     description:

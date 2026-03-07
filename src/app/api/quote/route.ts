@@ -9,7 +9,6 @@ const quoteSchema = z.object({
   company: z.string().optional(),
   phone: z.string().optional(),
   projectType: z.string().min(1),
-  budget: z.string().min(1),
   timeline: z.string().min(1),
   description: z.string().min(20),
 });
@@ -36,7 +35,6 @@ export async function POST(request: Request) {
           <tr><td style="padding:8px;font-weight:bold">Company:</td><td style="padding:8px">${escapeHtml(data.company || "N/A")}</td></tr>
           <tr><td style="padding:8px;font-weight:bold">Phone:</td><td style="padding:8px">${escapeHtml(data.phone || "N/A")}</td></tr>
           <tr><td style="padding:8px;font-weight:bold">Project Type:</td><td style="padding:8px">${escapeHtml(data.projectType)}</td></tr>
-          <tr><td style="padding:8px;font-weight:bold">Budget:</td><td style="padding:8px">${escapeHtml(data.budget)}</td></tr>
           <tr><td style="padding:8px;font-weight:bold">Timeline:</td><td style="padding:8px">${escapeHtml(data.timeline)}</td></tr>
         </table>
         <hr/>

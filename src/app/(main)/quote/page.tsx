@@ -13,7 +13,6 @@ const quoteSchema = z.object({
   company: z.string().optional(),
   phone: z.string().optional(),
   projectType: z.string().min(1, "Please select a project type"),
-  budget: z.string().min(1, "Please select a budget range"),
   timeline: z.string().min(1, "Please select a timeline"),
   description: z.string().min(20, "Please describe your project (min 20 chars)"),
 });
@@ -30,15 +29,6 @@ const projectTypes = [
   "Email Hosting Services",
   "Multiple Services",
   "Other",
-];
-
-const budgetRanges = [
-  "Under ₹50,000",
-  "₹50,000 - ₹1,00,000",
-  "₹1,00,000 - ₹3,00,000",
-  "₹3,00,000 - ₹5,00,000",
-  "₹5,00,000+",
-  "Not sure yet",
 ];
 
 const timelines = [
@@ -252,61 +242,32 @@ export default function QuotePage() {
                       )}
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <div>
-                        <label
-                          htmlFor="budget"
-                          className="block text-sm text-beige-100/70 mb-2"
-                        >
-                          Budget Range *
-                        </label>
-                        <select id="budget" {...register("budget")} className={selectClasses}>
-                          <option value="" className="bg-forest-900">
-                            Select budget
+                    <div>
+                      <label
+                        htmlFor="timeline"
+                        className="block text-sm text-beige-100/70 mb-2"
+                      >
+                        Timeline *
+                      </label>
+                      <select id="timeline" {...register("timeline")} className={selectClasses}>
+                        <option value="" className="bg-forest-900">
+                          Select timeline
+                        </option>
+                        {timelines.map((t) => (
+                          <option
+                            key={t}
+                            value={t}
+                            className="bg-forest-900"
+                          >
+                            {t}
                           </option>
-                          {budgetRanges.map((range) => (
-                            <option
-                              key={range}
-                              value={range}
-                              className="bg-forest-900"
-                            >
-                              {range}
-                            </option>
-                          ))}
-                        </select>
-                        {errors.budget && (
-                          <p className="text-red-400 text-xs mt-1.5">
-                            {errors.budget.message}
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="timeline"
-                          className="block text-sm text-beige-100/70 mb-2"
-                        >
-                          Timeline *
-                        </label>
-                        <select id="timeline" {...register("timeline")} className={selectClasses}>
-                          <option value="" className="bg-forest-900">
-                            Select timeline
-                          </option>
-                          {timelines.map((t) => (
-                            <option
-                              key={t}
-                              value={t}
-                              className="bg-forest-900"
-                            >
-                              {t}
-                            </option>
-                          ))}
-                        </select>
-                        {errors.timeline && (
-                          <p className="text-red-400 text-xs mt-1.5">
-                            {errors.timeline.message}
-                          </p>
-                        )}
-                      </div>
+                        ))}
+                      </select>
+                      {errors.timeline && (
+                        <p className="text-red-400 text-xs mt-1.5">
+                          {errors.timeline.message}
+                        </p>
+                      )}
                     </div>
 
                     <div>
