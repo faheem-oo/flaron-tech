@@ -9,7 +9,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated background elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 max-md:opacity-0">
         {/* Gradient orbs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-forest-500/20 rounded-full blur-[120px] animate-glow" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-glow-green/10 rounded-full blur-[100px] animate-glow [animation-delay:1.5s]" />

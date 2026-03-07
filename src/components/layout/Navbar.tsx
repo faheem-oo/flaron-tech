@@ -24,6 +24,18 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -72,46 +84,58 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-beige-100 p-2"
+            className="md:hidden text-beige-100 p-2 relative z-50"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
+      </nav>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
-            >
-              <div className="pt-4 pb-6 space-y-3">
-                {navLinks.map((link) => (
+      {/* Mobile Navigation - Full Screen Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 top-0 left-0 w-full h-full bg-forest-900/95 backdrop-blur-md z-40 md:hidden flex flex-col items-center justify-center"
+          >
+            <div className="flex flex-col items-center gap-6">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                >
                   <Link
-                    key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-beige-100/80 hover:text-glow-green transition-colors py-2 text-sm font-medium tracking-wide uppercase"
+                    className="text-beige-100/80 hover:text-glow-green transition-colors text-2xl font-heading font-semibold tracking-wide uppercase"
                   >
                     {link.label}
                   </Link>
-                ))}
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+              >
                 <Link
                   href="/quote"
                   onClick={() => setIsOpen(false)}
-                  className="block bg-forest-400 hover:bg-forest-300 text-forest-900 px-5 py-2.5 rounded-lg text-sm font-semibold text-center transition-all mt-4"
+                  className="bg-forest-400 hover:bg-forest-300 text-forest-900 px-8 py-3 rounded-xl text-lg font-semibold text-center transition-all mt-4 inline-block"
                 >
                   Request Quote
                 </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
