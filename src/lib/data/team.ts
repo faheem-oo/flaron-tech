@@ -127,6 +127,6 @@ export const team: TeamMember[] = [
       "Business Analysis",
     ],
     color: "#FF8F00",
-    portfolioUrl: "#",
+    portfolioUrl: "https://fox-psi.vercel.app/",
   },
 ];
