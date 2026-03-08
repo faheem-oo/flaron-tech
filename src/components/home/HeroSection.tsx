@@ -41,7 +41,7 @@ export default function HeroSection() {
           {/* Logo */}
           <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-forest-500/10 backdrop-blur-sm border border-forest-500/20 flex items-center justify-center mb-4 shadow-lg shadow-forest-500/10 overflow-hidden">
             <Image
-              src="/orglogo.png"
+              src="/mainlogo.png"
               alt="Flaron Tech Logo"
               width={128}
               height={128}

@@ -31,7 +31,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-7 h-7 flex items-center justify-center">
                 <Image
-                  src="/orglogo.png"
+                  src="/mainlogo.png"
                   alt="Flaron Tech"
                   width={28}
                   height={28}

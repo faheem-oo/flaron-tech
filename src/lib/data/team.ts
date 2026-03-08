@@ -112,7 +112,7 @@ export const team: TeamMember[] = [
     role: "Project Strategist & Developer",
     animal: "Fox",
     animalEmoji: "🦊",
-    avatar: "/faheem.png",
+    avatar: "/faheemud.png",
     traits: ["Strategy", "Clever Problem Solving"],
     shortBio:
       "A strategic thinker who navigates complex project landscapes with clever, elegant solutions.",

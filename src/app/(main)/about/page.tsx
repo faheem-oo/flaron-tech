@@ -211,7 +211,7 @@ export default function AboutPage() {
                       alt={member.name}
                       width={96}
                       height={96}
-                      className={`w-full h-full object-cover ${member.slug === 'faheem' ? 'scale-50' : (member.slug === 'ronak' || member.slug === 'aravind' ? 'scale-75' : '')}`}
+                      className={`w-full h-full ${member.slug === 'faheem' ? 'object-contain p-1' : 'object-cover'} ${member.slug === 'ronak' || member.slug === 'aravind' ? 'scale-75' : ''}`}
                     />
                   </div>
 

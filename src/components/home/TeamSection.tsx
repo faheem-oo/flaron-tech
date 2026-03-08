@@ -23,7 +23,7 @@ export default function TeamSection() {
                     alt={member.name}
                     width={80}
                     height={80}
-                    className={`w-full h-full object-cover ${member.slug === 'faheem' ? 'scale-50' : (member.slug === 'ronak' || member.slug === 'aravind' ? 'scale-75' : '')}`}
+                    className={`w-full h-full ${member.slug === 'faheem' ? 'object-contain p-1' : 'object-cover'} ${member.slug === 'ronak' || member.slug === 'aravind' ? 'scale-75' : ''}`}
                   />
                 </div>
 

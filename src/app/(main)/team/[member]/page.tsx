@@ -51,8 +51,8 @@ export default async function TeamMemberPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="glass-card rounded-3xl p-8 sm:p-12 relative">
-              {/* View Portfolio Button - Top Right */}
-              <div className="absolute top-6 right-6">
+              {/* View Portfolio Button - Top Right on desktop, below avatar on mobile */}
+              <div className="hidden sm:block absolute top-6 right-6">
                 <a
                   href={member.portfolioUrl}
                   target="_blank"
@@ -72,7 +72,7 @@ export default async function TeamMemberPage({ params }: Props) {
                     alt={member.name}
                     width={128}
                     height={128}
-                    className={`w-full h-full object-cover ${member.slug === 'faheem' ? 'scale-50' : (member.slug === 'ronak' || member.slug === 'aravind' ? 'scale-75' : '')}`}
+                    className={`w-full h-full ${member.slug === 'faheem' ? 'object-contain p-2' : 'object-cover'} ${member.slug === 'ronak' || member.slug === 'aravind' ? 'scale-75' : ''}`}
                   />
                 </div>
 
@@ -100,6 +100,19 @@ export default async function TeamMemberPage({ params }: Props) {
                   <p className="text-beige-100/60 leading-relaxed max-w-2xl">
                     {member.fullBio}
                   </p>
+
+                  {/* View Portfolio Button - Mobile only */}
+                  <div className="sm:hidden mt-6">
+                    <a
+                      href={member.portfolioUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-forest-400 hover:bg-forest-300 text-forest-900 px-6 py-3 rounded-xl font-semibold transition-all hover:shadow-lg hover:shadow-forest-400/25 text-sm w-full justify-center"
+                    >
+                      View Portfolio
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

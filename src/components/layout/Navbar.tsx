@@ -50,7 +50,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 flex items-center justify-center">
               <Image
-                src="/orglogo.png"
+                src="/mainlogo.png"
                 alt="Flaron Tech"
                 width={32}
                 height={32}
